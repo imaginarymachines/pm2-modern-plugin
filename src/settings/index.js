@@ -3,7 +3,6 @@ import { render } from 'react-dom';
 import React from 'react';
 
 import { Tabs } from '@imaginary-machines/wp-admin-components';
-import { __ } from '@wordpress/i18n';
 import SettingsForm from './settingsTab';
 import OtherTab from './otherTab';
 const tabs = [

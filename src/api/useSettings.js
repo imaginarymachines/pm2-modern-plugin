@@ -20,6 +20,7 @@ const getSettings = async () => {
 	} ).then( ( res ) => {
 		return res;
 	} );
+	return r;
 };
 
 /**
