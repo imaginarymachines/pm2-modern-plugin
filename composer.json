@@ -1,0 +1,59 @@
+{
+    "name": "vendor-slug/plugin",
+    "type": "wordpress-plugin",
+    "description": "PLUGIN_DESCRIPTION",
+    "license": "GPL-2.0-or-later",
+    "homepage": "https://PLUGIN_URI",
+    "support": {
+        "source": "https://PLUGIN_GITHUB_REPO",
+        "issues": "https://PLUGIN_GITHUB_REPO/issues"
+    },
+    "config": {
+        "sort-packages": true,
+        "platform": {
+            "php": "7.4"
+        },
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "roots/wordpress-core-installer": true
+        }
+    },
+    "extra": {
+        "wordpress-install-dir": "wordpress"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=7.4"
+    },
+    "require-dev": {
+        "automattic/vipwpcs": "^2.3",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
+        "php-coveralls/php-coveralls": "^2.5",
+        "phpcompatibility/php-compatibility": "10.x-dev as 9.99.99",
+        "phpcompatibility/phpcompatibility-wp": "dev-master",
+        "phpunit/phpunit": "^9.5",
+        "roots/wordpress-core-installer": "^1.100",
+        "roots/wordpress-full": "^6.0",
+        "spatie/phpunit-watcher": "^1.23",
+        "wp-coding-standards/wpcs": "^2.3",
+        "wp-phpunit/wp-phpunit": "^6.0",
+        "yoast/phpunit-polyfills": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "VendorNamespace\\PluginNamespace\\": "classes/",
+            "VendorNamespace\\PluginNamespace\\Tests\\": "tests/WordPress/"
+        }
+    },
+    "scripts": {
+        "lint": "phpcs",
+        "lint-php8": "phpcs -p --standard=PHPCompatibilityWP --runtime-set testVersion 8.0- --extensions=php --ignore='vendor/,wordpress/,node_modules/' .",
+        "test": "phpunit",
+        "test:watch": [
+            "Composer\\Config::disableProcessTimeout",
+            "phpunit-watcher watch"
+        ],
+        "format": "phpcbf"
+    }
+}
