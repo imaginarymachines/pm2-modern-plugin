@@ -64,4 +64,13 @@ class Settings
          */
         return apply_filters('ACTION_PREFIX_get_settings', $values);
     }
+
+    /**
+     * Get defaults for settings
+     * @return array
+     */
+    public function getDefaults()
+    {
+        return $this->defaults;
+    }
 }
