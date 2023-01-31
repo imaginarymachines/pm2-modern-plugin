@@ -16,6 +16,7 @@
 use VendorNamespace\PluginNamespace\Settings;
 use VendorNamespace\PluginNamespace\Plugin;
 use VendorNamespace\PluginNamespace\Rest\Api;
+use VendorNamespace\PluginNamespace\SettingsPage;
 
 /**
  * Shortcut constant to the path of this file.
@@ -47,7 +48,7 @@ add_action(
 
 // Register script built in build/admin.js
 add_action(
-	'-admin_enqueue_scripts',
+	'admin_enqueue_scripts',
 	function() {
 		$dependencies = [];
 		$version      = PM2_MODERN_VERSION;

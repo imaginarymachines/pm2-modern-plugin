@@ -50,9 +50,23 @@ class Api {
     public function registerRoutes() {
         $controller = new SettingsController( $this->plugin );
         register_rest_route( $this->namespace, '/settings', [
-            'methods' => 'GET',
-            'callback' => [ $controller, 'get' ],
-            'permission_callback' => [ $controller, 'authorize' ],
+            [
+                'methods' => 'GET',
+                'callback' => [ $controller, 'get' ],
+                'permission_callback' => [ $controller, 'authorize' ],
+            ],
+            [
+                'methods' => 'POST',
+                'callback' => [ $controller, 'update' ],
+                'permission_callback' => [ $controller, 'authorize' ],
+                'args' => [
+                    'apiKey' => [
+                        'required' => true,
+                        'sanitize_callback' => 'sanitize_text_field',
+                        'type' => 'string',
+                    ]
+                ]
+            ],
         ] );
     }
 
