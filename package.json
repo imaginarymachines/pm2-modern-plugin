@@ -1,0 +1,43 @@
+{
+	"name": "pm2-modern-plugin",
+	"version": "1.0.0",
+	"description": "PLUGIN_DESCRIPTION",
+	"author": "PLUGIN_AUTHOR_NAME",
+	"license": "GPL-2.0-or-later",
+	"main": "build/index.js",
+	"scripts": {
+		"build": "wp-scripts build",
+		"lint": "npm-run-all lint:*",
+		"lint:php": "composer lint",
+		"lint:css": "wp-scripts lint-style ./src/*.scss ./admin/*.css",
+		"lint:js": "wp-scripts lint-js ./src",
+		"format": "npm-run-all format:*",
+		"format:php": "composer format",
+		"format:js": "npm run lint:js -- --fix",
+		"format:css": "npm run lint:css -- --fix",
+		"packages-update": "wp-scripts packages-update",
+		"plugin-zip": "wp-scripts plugin-zip",
+		"start": "wp-scripts start",
+		"env": "wp-env",
+		"test:php": "npm run composer test",
+		"test:watch": "npm run composer test:watch",
+		"composer": "wp-env run phpunit composer --working-dir=/var/www/html/wp-content/plugins/pm2-modern-plugin",
+		"preinstall": "composer install",
+		"prezip:php": "composer install --no-dev -o",
+		"prezip": "npm-run-all prezip:*",
+		"prezip:js": "npm run build",
+		"zip": "npm run prezip && node makeZip.js"
+	},
+	"devDependencies": {
+		"@wordpress/env": "^5.8.0",
+		"@wordpress/scripts": "^25.0.0"
+	},
+	"dependencies": {
+		"@imaginary-machines/wp-admin-components": "^0.4.1",
+		"@wordpress/hooks": "^3.23.0",
+		"archiver": "^5.3.1",
+		"npm-run-all": "^4.1.5",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
+	}
+}
