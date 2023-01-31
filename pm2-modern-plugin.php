@@ -13,7 +13,6 @@
  * Text Domain:       pm2-modern-plugin
  *
  */
-
 use VendorNamespace\PluginNamespace\Settings;
 use VendorNamespace\PluginNamespace\Plugin;
 use VendorNamespace\PluginNamespace\Rest\Api;
@@ -71,7 +70,7 @@ add_action(
 
 
 add_action(
-	'ufoaiwp',
+	'ACTION_PREFIX',
 	function ( Plugin $plugin ) {
 		$plugin->init();
 	}
@@ -86,6 +85,5 @@ do_action(
 	'ACTION_PREFIX',
 	new Plugin(
 		new Settings(),
-		new Api()
 	)
 );

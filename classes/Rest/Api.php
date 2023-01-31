@@ -2,6 +2,7 @@
 namespace VendorNamespace\PluginNamespace\Rest;
 
 use VendorNamespace\PluginNamespace\Plugin;
+use VendorNamespace\PluginNamespace\Rest\Controllers\Settings as SettingsController;
 
 /**
  * Register all routes for REST API
@@ -18,6 +19,26 @@ class Api {
     protected $namespace  = 'pm2-modern-plugin/v1';
 
     /**
+     * Plugin instance
+     *
+     * @since 1.0.0
+     *
+     * @var Plugin
+     */
+    protected $plugin;
+
+    /**
+     * Constructor
+     *
+     * @since 1.0.0
+     *
+     * @param Plugin $plugin
+     */
+    public function __construct( Plugin $plugin ) {
+        $this->plugin = $plugin;
+    }
+
+    /**
      * Register all routes
      *
      * @since 1.0.0
@@ -27,7 +48,12 @@ class Api {
      * @return void
      */
     public function registerRoutes() {
-        // Register the routes here
+        $controller = new SettingsController( $this->plugin );
+        register_rest_route( $this->namespace, '/settings', [
+            'methods' => 'GET',
+            'callback' => [ $controller, 'get' ],
+            'permission_callback' => [ $controller, 'authorize' ],
+        ] );
     }
 
 }

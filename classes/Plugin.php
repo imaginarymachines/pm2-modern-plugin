@@ -39,14 +39,37 @@ class Plugin {
      * @since 0.0.1
      * @param Settings $settings
      */
-    public function __construct( Settings $settings, Api $api ) {
+    public function __construct( Settings $settings ) {
         $this->settings = $settings;
-        $this->api = $api;
     }
 
+    /**
+     * Initialize the plugin
+     *
+     * @since 0.0.1
+     *
+     * @uses "ACTION_PREFIX" action
+     *
+     * @return void
+     */
     public function init(){
+        if( ! isset($this->api) ){
+            $this->api = new Api( $this );
+        }
         $this->hooks = new Hooks( $this );
         $this->hooks->addHooks();
+    }
+
+
+	/**
+	 * When the plugin is loaded:
+     *  - Load the plugin's text domain.
+	 *
+	 * @uses "plugins_loaded" action
+	 *
+	 */
+    public function pluginLoaded(){
+		load_plugin_textdomain( 'pm2-modern-plugin' );
     }
 
     /**
@@ -60,6 +83,13 @@ class Plugin {
         return $this->settings;
     }
 
+    /**
+     * Get API
+     *
+     * @since 0.0.1
+     *
+     * @return Api
+     */
     public function getRestApi() {
         return $this->api;
     }

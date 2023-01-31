@@ -27,9 +27,9 @@ class Hooks {
 	 * Register all hooks
 	 */
 	public function addHooks() {
-		add_action( 'plugins_loaded', [$this->plugin, 'load_textdomain']);
+		add_action( 'plugins_loaded', [$this->plugin, 'pluginLoaded']);
 		add_action( 'admin_menu', [$this->settingsPage, 'addPage' ]);
-		add_action('rest_api_init', [$this->plugin, 'registerRoutes']);
+		add_action( 'rest_api_init', [$this->plugin->getRestApi(), 'registerRoutes']);
 
 	}
 
@@ -37,9 +37,9 @@ class Hooks {
 	 * Remove Hooks
 	 */
 	public function removeHooks() {
-		remove_action( 'plugins_loaded', [$this->plugin, 'load_textdomain']);
+		remove_action( 'plugins_loaded', [$this->plugin, 'pluginLoaded']);
 		remove_action( 'admin_menu', [$this->settingsPage, 'addPage' ]);
-		remove_action('rest_api_init', [$this->plugin, 'registerRoutes']);
+		remove_action( 'rest_api_init', [$this->plugin->getRestApi(), 'registerRoutes']);
 
 	}
 
