@@ -16,9 +16,7 @@
 
 use VendorNamespace\PluginNamespace\Settings;
 use VendorNamespace\PluginNamespace\Plugin;
-
-
-
+use VendorNamespace\PluginNamespace\Rest\Api;
 
 /**
  * Shortcut constant to the path of this file.
@@ -87,6 +85,7 @@ add_action(
 do_action(
 	'ACTION_PREFIX',
 	new Plugin(
-		new Settings()
+		new Settings(),
+		new Api()
 	)
 );

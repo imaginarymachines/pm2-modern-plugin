@@ -18,27 +18,6 @@ class Api {
     protected $namespace  = 'pm2-modern-plugin/v1';
 
     /**
-     * Plugin class
-     *
-     * @since 1.0.0
-     *
-     * @var Plugin
-     */
-    protected $plugin;
-
-
-    /**
-     * Constructor
-     *
-     * @since 1.0.0
-     *
-     * @param Plugin $plugin
-     */
-    public function __construct( Plugin $plugin ) {
-        $this->plugin = $plugin;
-    }
-
-    /**
      * Register all routes
      *
      * @since 1.0.0
