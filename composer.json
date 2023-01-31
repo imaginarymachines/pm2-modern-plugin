@@ -3,10 +3,10 @@
     "type": "wordpress-plugin",
     "description": "PLUGIN_DESCRIPTION",
     "license": "GPL-2.0-or-later",
-    "homepage": "https://PLUGIN_URI",
+    "homepage": "https://plugin-uri.com",
     "support": {
-        "source": "https://PLUGIN_GITHUB_REPO",
-        "issues": "https://PLUGIN_GITHUB_REPO/issues"
+        "source": "https://github.com/GITHUB_ORG/GITHUB_REPO",
+        "issues": "https://github.com/GITHUB_ORG/GITHUB_REPO/issues"
     },
     "config": {
         "sort-packages": true,
