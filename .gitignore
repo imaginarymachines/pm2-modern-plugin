@@ -6,3 +6,4 @@
 /tests/logs/
 /wordpress/
 build
+.phpunit.result.cache

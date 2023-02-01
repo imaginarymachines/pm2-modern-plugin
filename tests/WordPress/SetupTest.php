@@ -12,6 +12,8 @@ class SetupTest extends TestCase {
 
 	/**
 	 * Check that the constants are defined.
+	 *
+	 * @group setup
 	 */
 	public function test_constant_defined() {
 
@@ -22,8 +24,10 @@ class SetupTest extends TestCase {
 
 	/**
 	 * Classes loaded?
-	 * 	- autloader works
+	 * 	- autoloader works
 	 *  - files exist
+	 *
+	 * @group setup
 	 */
 	public function test_classes_exist() {
 
@@ -32,6 +36,9 @@ class SetupTest extends TestCase {
 
 	/**
 	 * Test adding hooks.
+	 *
+	 * @group setup
+	 * @group hooks
 	 */
 	public function test_add_hooks() {
 		$plugin = $this->makePlugin();

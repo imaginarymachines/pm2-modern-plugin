@@ -7,6 +7,14 @@ use VendorNamespace\PluginNamespace\Settings;
 abstract class TestCase extends \WP_UnitTestCase {
 
 	/**
+	 * Delete the settings after each test.
+	 */
+	protected function tearDown():void {
+		delete_option('pm2-modern-plugin-settings');
+		parent::tearDown();
+	}
+
+	/**
 	 * Make a plugin instance.
 	 * @param Settings $settings Optional settings to use.
 	 * @return Plugin

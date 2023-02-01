@@ -44,7 +44,7 @@ class Settings
          * @param array $data Data to save
          */
         $data = apply_filters('ACTION_PREFIX_save_settings', $data);
-        update_option($this->optionName,);
+        update_option($this->optionName,$data);
     }
     /**
      * Get all settings

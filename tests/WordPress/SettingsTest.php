@@ -1,33 +1,34 @@
 <?php
-namespace ImaginaryMachines\UfoAi\Tests;
+namespace VendorNamespace\PluginNamespace\Tests;
 
 use VendorNamespace\PluginNamespace\Settings;
 
 class SettingsTest extends TestCase {
-	//Test get and save a setting that is allowed
 
-	protected function tearDown() {
-		delete_option(Settings::OPTION_NAME);
-		parent::tearDown();
-	}
+
 	/**
-	 * @group now
+	 * Ensure can get settings
+	 *
+	 * @group settings
 	 */
-	public function test_get_save_allowed_setting() {
-		$value = 'value';
+	public function test_get_saved_settings() {
 		$settings = new Settings();
+
+		$value = 'value';
 		$settings->save(
 			['apiKey' => $value]
 		);
 		$this->assertEquals(
-			$value,
-			$settings->getAll()['apiKey'],
+			['apiKey' => $value],
+			get_option('pm2-modern-plugin-settings')
 		);
 	}
 
 
-
-	//Test get all settings
+	/**
+	 * Can we get the default settings?
+	 *  @group settings
+	 */
 	public function test_get_all_settings() {
 		$settings = new Settings();
 
@@ -35,6 +36,14 @@ class SettingsTest extends TestCase {
 		$this->assertEquals(
 			$settings->getDefaults(),
 			$current,
+		);
+		$value = 'changed';
+		$settings->save(
+			['apiKey' => $value]
+		);
+		$this->assertEquals(
+			['apiKey' => $value],
+			$settings->getAll()
 		);
 	}
 }
