@@ -15,7 +15,6 @@
  */
 use VendorNamespace\PluginNamespace\Settings;
 use VendorNamespace\PluginNamespace\Plugin;
-use VendorNamespace\PluginNamespace\Rest\Api;
 use VendorNamespace\PluginNamespace\SettingsPage;
 
 /**
@@ -69,7 +68,13 @@ add_action(
 	}
 );
 
+//Register block built in build/block.js
+add_action( 'init', function(){
+	register_block_type( __DIR__ . '/build/block' );
+} );
 
+
+//Setup plugin
 add_action(
 	'ACTION_PREFIX',
 	function ( Plugin $plugin ) {
