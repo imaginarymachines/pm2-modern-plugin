@@ -15,13 +15,11 @@
  */
 use VendorNamespace\PluginNamespace\Settings;
 use VendorNamespace\PluginNamespace\Plugin;
-use VendorNamespace\PluginNamespace\SettingsPage;
 
 /**
  * Shortcut constant to the path of this file.
  */
 define( 'PM2_MODERN_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
-
 /**
  * Version of the plugin.
  */
@@ -39,38 +37,17 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 // Register block built in build/block.js
 add_action(
-	'-init',
+	'init',
 	function() {
-		register_block_type( __DIR__ . '/build/block' );
+		register_block_type( PM2_MODERN_PLUGIN_DIR . '/build/block' );
 	}
 );
 
-// Register script built in build/admin.js
-add_action(
-	'admin_enqueue_scripts',
-	function() {
-		$dependencies = [];
-		$version      = PM2_MODERN_VERSION;
 
-		// Use asset file if it exists
-		if ( file_exists( __DIR__ . '/build/settings.asset.php' ) ) {
-			$asset_file   = include __DIR__ . '/build/settings.asset.php';
-			$dependencies = $asset_file['dependencies'];
-			$version      = $asset_file['version'];
-
-		}
-		wp_register_script(
-			SettingsPage::SCREEN,
-			plugins_url( 'build/settings.js', __FILE__ ),
-			$dependencies,
-			$version,
-		);
-	}
-);
 
 //Register block built in build/block.js
 add_action( 'init', function(){
-	register_block_type( __DIR__ . '/build/block' );
+	register_block_type( PM2_MODERN_PLUGIN_DIR . '/build/block' );
 } );
 
 

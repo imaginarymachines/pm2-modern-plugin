@@ -22,6 +22,33 @@ class SettingsPage
     {
         $this->plugin = $plugin;
     }
+
+    /**
+     * Register assets
+     *
+     * @since 0.0.1
+     *
+     * @uses "admin_enqueue_scripts" action
+     */
+    public function registerAssets(){
+        $dependencies = [];
+		$version      = PM2_MODERN_VERSION;
+
+		// Use asset file if it exists
+		if ( file_exists( PM2_MODERN_PLUGIN_DIR . 'build/settings.asset.php' ) ) {
+			$asset_file   = include PM2_MODERN_PLUGIN_DIR . 'build/settings.asset.php';
+			$dependencies = $asset_file['dependencies'];
+			$version      = $asset_file['version'];
+
+		}
+
+		wp_register_script(
+			SettingsPage::SCREEN,
+			plugins_url( 'build/settings.js', PM2_MODERN_MAIN_FILE ),
+			$dependencies,
+			$version,
+		);
+    }
     /**
      * Adds the settings page to the Settings menu.
      *

@@ -1,7 +1,10 @@
 <?php
 
 $replacments = [
+    'main-file' => 'pm2-modern-plugin',
     'slug' => 'pm2-modern-plugin',
+    'version' => '0.1.0',
+    'description' => 'PLUGIN_DESCRIPTION',
     'composer' => [
         'vendor' => 'vendor-slug',
         'package' => 'plugin',
@@ -9,8 +12,6 @@ $replacments = [
         'PluginNamespace' => 'PluginNamespace',
         'PluginClass' => 'Plugin'
     ],
-    'description' => 'PLUGIN_DESCRIPTION',
-
     'github' => [
         'org' => 'GITHUB_ORG',
         'repo' => 'GITHUB_REPO',
@@ -32,5 +33,17 @@ $replacments = [
         'function' => 'pm2_modern',
         'action' => 'ACTION_PREFIX',
     ],
+    'block' => [
+        'files' => 'src/block',
+        [
+            'title' => 'BLOCK_TITLE',
+            'description' => 'BLOCK_DESCRIPTION',
+            'name' => 'pm2-modern-plugin/block-name',
+            'textdomain' => 'pm2-modern-plugin',
+            'category' => 'text',
+            'icon' => 'smiley',
+            'version' => '0.1.0',
+        ]
+    ]
 
 ];

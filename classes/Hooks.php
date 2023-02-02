@@ -30,7 +30,7 @@ class Hooks {
 		add_action( 'plugins_loaded', [$this->plugin, 'pluginLoaded']);
 		add_action( 'admin_menu', [$this->settingsPage, 'addPage' ]);
 		add_action( 'rest_api_init', [$this->plugin->getRestApi(), 'registerRoutes']);
-
+		add_action( 'admin_enqueue_scripts', [$this->settingsPage, 'registerAssets']);
 	}
 
 	/**
@@ -40,7 +40,7 @@ class Hooks {
 		remove_action( 'plugins_loaded', [$this->plugin, 'pluginLoaded']);
 		remove_action( 'admin_menu', [$this->settingsPage, 'addPage' ]);
 		remove_action( 'rest_api_init', [$this->plugin->getRestApi(), 'registerRoutes']);
-
+		remove_action( 'admin_enqueue_scripts', [$this->settingsPage, 'registerAssets']	);
 	}
 
 }
