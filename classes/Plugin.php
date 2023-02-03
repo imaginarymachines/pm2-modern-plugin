@@ -48,7 +48,7 @@ class Plugin {
      *
      * @since 0.0.1
      *
-     * @uses "ACTION_PREFIX" action
+     * @uses "ACTION_PREFIX_init" action
      *
      * @return void
      */

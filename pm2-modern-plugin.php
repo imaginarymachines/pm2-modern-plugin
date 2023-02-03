@@ -53,7 +53,7 @@ add_action( 'init', function(){
 
 //Setup plugin
 add_action(
-	'ACTION_PREFIX',
+	'ACTION_PREFIX_init',
 	function ( Plugin $plugin ) {
 		$plugin->init();
 	}
@@ -65,7 +65,7 @@ add_action(
  * @param Plugin $plugin
  */
 do_action(
-	'ACTION_PREFIX',
+	'ACTION_PREFIX_init',
 	new Plugin(
 		new Settings(),
 	)
