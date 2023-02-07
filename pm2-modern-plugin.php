@@ -35,16 +35,6 @@ define( 'PM2_MODERN_MAIN_FILE', __FILE__ );
 require_once __DIR__ . '/vendor/autoload.php';
 
 
-// Register block built in build/block.js
-add_action(
-	'init',
-	function() {
-		register_block_type( PM2_MODERN_PLUGIN_DIR . '/build/block' );
-	}
-);
-
-
-
 //Register block built in build/block.js
 add_action( 'init', function(){
 	register_block_type( PM2_MODERN_PLUGIN_DIR . '/build/block' );
