@@ -20,7 +20,9 @@ class Hooks {
 
 	public function __construct( Plugin $plugin ) {
 		$this->plugin = $plugin;
-		$this->settingsPage = new SettingsPage($plugin);
+		$this->settingsPage = new SettingsPage(
+			$plugin, 'pm2-modern-plugin-settings', 'Plugin Settings','settings'
+		);
 	}
 
 	/**
