@@ -32,11 +32,11 @@ class SettingsPage
      */
     public function registerAssets(){
         $dependencies = [];
-		$version      = PM2_MODERN_VERSION;
+		$version      = $this->plugin->getVersion();
 
 		// Use asset file if it exists
-		if ( file_exists( PM2_MODERN_PLUGIN_DIR . 'build/settings.asset.php' ) ) {
-			$asset_file   = include PM2_MODERN_PLUGIN_DIR . 'build/settings.asset.php';
+		if ( file_exists( $this->plugin->getPluginDir() . 'build/settings.asset.php' ) ) {
+			$asset_file   = include $this->plugin->getPluginDir() . 'build/settings.asset.php';
 			$dependencies = $asset_file['dependencies'];
 			$version      = $asset_file['version'];
 
@@ -44,7 +44,7 @@ class SettingsPage
 
 		wp_register_script(
 			SettingsPage::SCREEN,
-			plugins_url( 'build/settings.js', PM2_MODERN_MAIN_FILE ),
+			plugins_url( 'build/settings.js', $this->plugin->getMainFile() ),
 			$dependencies,
 			$version,
 		);
@@ -73,7 +73,7 @@ class SettingsPage
 
         // This adds a link in the plugins list table
         add_action(
-            'plugin_action_links_' . plugin_basename(PM2_MODERN_MAIN_FILE),
+            'plugin_action_links_' . plugin_basename($this->plugin->getMainFile()),
             [
                 $this,
                 'addLinks',
@@ -123,7 +123,6 @@ class SettingsPage
             [
                 'apiUrl'   => rest_url('pm2-modern-plugin/v1'),
                 'settings' => $settings,
-
             ]
         );
 ?>
