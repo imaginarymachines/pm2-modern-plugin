@@ -21,7 +21,7 @@ archive.append(fs.createReadStream(
 ), { name: `/${slug}.php` });
 
 //Directories to copy
-['php', 'build', 'vendor/composer'].forEach( ( dir ) => {
+['classes', 'build', 'vendor/composer'].forEach( ( dir ) => {
 	archive.directory(dir, '/' + dir);
 });
 
