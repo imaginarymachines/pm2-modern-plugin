@@ -23,6 +23,11 @@ abstract class TestCase extends \WP_UnitTestCase {
 		if( ! $settings ){
 			$settings = new Settings();
 		}
-		return new Plugin($settings);
+		return new Plugin(
+			new Settings(),
+			PM2_MODERN_VERSION,
+			PM2_MODERN_MAIN_FILE,
+			PM2_MODERN_PLUGIN_DIR
+		);
 	}
 }

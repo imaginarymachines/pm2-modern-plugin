@@ -58,5 +58,8 @@ do_action(
 	'ACTION_PREFIX_init',
 	new Plugin(
 		new Settings(),
+		PM2_MODERN_VERSION,
+		PM2_MODERN_MAIN_FILE,
+		PM2_MODERN_PLUGIN_DIR
 	)
 );
